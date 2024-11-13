@@ -6,7 +6,11 @@ class Database {
   }
 
   async connect() {
-    if (this.connection) return this.connection
+    if (this.connection) {
+      console.log('Database already connected')
+
+      return this.connection
+    }
 
     try {
       const connection = await mongoose.connect(process.env.MONGODB_URI)
