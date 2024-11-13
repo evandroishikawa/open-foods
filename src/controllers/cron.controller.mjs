@@ -6,7 +6,7 @@ import { processLargeNDJSON } from '../lib/parsers/parserLargeNDJSON.mjs'
 import { ImportHistory } from '../models/importHistory.model.mjs'
 import { Product } from '../models/product.model.mjs'
 
-export default class CronController {
+export class CronController {
   static _instance = new CronController()
   static _lastRun = null
 
