@@ -41,12 +41,10 @@ export class CronController {
       let total = 0
 
       for (const filename of filenames) {
-        const results = await processLargeNDJSON(
+        total += await processLargeNDJSON(
           `https://challenges.coode.sh/food/data/json/${filename}`,
           processResult
-        )
-
-        total += results.length
+        ).length
       }
 
       importHistory.recordsCount = total
@@ -90,9 +88,12 @@ async function getFilenames() {
 async function processResult(result) {
   const product = new Product({
     ...result,
+    code: result.code.replaceAll('"', ''),
     imported_t: new Date(),
     status: 'draft',
   })
+
+  console.log('Saving product:', product.code)
 
   await product.save()
 }
