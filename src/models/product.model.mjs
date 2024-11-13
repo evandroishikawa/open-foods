@@ -1,7 +1,7 @@
 import { model, Schema } from 'mongoose'
 
 const productSchema = new Schema({
-  code: Number,
+  code: String,
   status: {
     type: String,
     enum: ['draft', 'trash', 'published'],
@@ -25,11 +25,7 @@ const productSchema = new Schema({
   serving_size: String,
   serving_quantity: Number,
   nutriscore_score: Number,
-  nutriscore_grade: {
-    type: String,
-    enum: ['a', 'b', 'c', 'd', 'e'],
-    default: 'e'
-  },
+  nutriscore_grade: String,
   main_category: String,
   image_url: String
 })
