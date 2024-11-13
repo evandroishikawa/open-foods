@@ -41,8 +41,6 @@ export class CronController {
       let total = 0
 
       for (const filename of filenames) {
-        console.log(`Processing ${filename}`)
-
         const results = await processLargeNDJSON(
           `https://challenges.coode.sh/food/data/json/${filename}`,
           processResult
@@ -52,9 +50,8 @@ export class CronController {
       }
 
       importHistory.recordsCount = total
-      importHistory.status = 'success'
 
-      console.log(`Processed ${total} records`)
+      importHistory.status = 'success'
     } catch (error) {
       console.error('Update products job error:', error)
 
