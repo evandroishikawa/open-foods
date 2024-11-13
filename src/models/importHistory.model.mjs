@@ -11,11 +11,11 @@ const ImportHistorySchema = new Schema({
     enum: ['pending', 'success', 'failed'],
     default: 'pending',
   },
-  importedCount: {
+  recordsCount: {
     type: Number,
     default: 0,
   },
-  errors: [
+  failures: [
     {
       message: String,
       stack: String,
